@@ -1,0 +1,21 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+
+<div class="header">
+    <h1>Публикации</h1>
+    <a href="/articles/create/" class="btn">Добавить пост</a>
+</div>
+
+{% for article in articles %}
+<div class="card">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.content|truncatechars:180 }}</p>
+    <a href="/articles/{{ article.id }}/edit/" class="btn secondary">Изменить</a>
+</div>
+{% empty %}
+<div class="card">
+    <p>Пока публикаций нет</p>
+</div>
+{% endfor %}
+
+{% endblock %}
